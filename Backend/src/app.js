@@ -7,7 +7,7 @@ const app =express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin:"https://interview-prep-cylp.onrender.com",
+    origin:"https://interview-prep-j9ira9qvh-interview-prep2.vercel.app",
     credentials:true
 }))
 //require all the routes here//
