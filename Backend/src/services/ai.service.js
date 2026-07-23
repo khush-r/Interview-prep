@@ -1,6 +1,7 @@
 const Groq = require("groq-sdk");
 const { z } = require("zod");
 const puppeteer = require("puppeteer");
+const chromium = require("@sparticuz/chromium");
 
 const groq = new Groq({
     apiKey: process.env.GROQ_API_KEY,
@@ -135,14 +136,14 @@ async function generatePdfFromHtml(htmlContent) {
 
     console.log("5. Launching browser");
 
-const browser = await puppeteer.launch({
-    headless: true,
-    args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage",
-    ],
-});
+    const browser = await puppeteer.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
+        headless: chromium.headless,
+    });
+
+    console.log("6. Browser launched");
 
     const page = await browser.newPage();
 
@@ -158,6 +159,7 @@ const browser = await puppeteer.launch({
             left: "15mm",
             right: "15mm",
         },
+        printBackground: true,
     });
 
     await browser.close();
