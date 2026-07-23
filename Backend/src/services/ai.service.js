@@ -157,6 +157,7 @@ async function generateResumePdf({
     resume,
     selfDescription,
     jobDescription,
+   
 }) {
 
   const prompt = `
