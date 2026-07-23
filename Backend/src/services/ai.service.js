@@ -128,9 +128,21 @@ Format:
     }
 }
 
+
+console.log("6. Browser launched");
+
 async function generatePdfFromHtml(htmlContent) {
 
-    const browser = await puppeteer.launch();
+    console.log("5. Launching browser");
+
+const browser = await puppeteer.launch({
+    headless: true,
+    args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+    ],
+});
 
     const page = await browser.newPage();
 
@@ -157,10 +169,12 @@ async function generateResumePdf({
     resume,
     selfDescription,
     jobDescription,
-   
 }) {
 
-  const prompt = `
+    try {
+        console.log("===== generateResumePdf Started =====");
+
+        const prompt = `
 You are an expert resume writer.
 
 Create a professional ATS-friendly resume based on the information below.
@@ -187,35 +201,50 @@ Example:
   "html": "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Resume</title></head><body><h1>John Doe</h1></body></html>"
 }
 `;
-    const completion = await groq.chat.completions.create({
 
-        model: "llama-3.3-70b-versatile",
+        console.log("Sending request to Groq...");
 
-        temperature: 0.3,
-
-        response_format: {
-            type: "json_object",
-        },
-
-        messages: [
-            {
-                role: "user",
-                content: prompt,
+        const completion = await groq.chat.completions.create({
+            model: "llama-3.3-70b-versatile",
+            temperature: 0.3,
+            response_format: {
+                type: "json_object",
             },
-        ],
-    });
-  console.log("===== RAW GROQ RESPONSE =====");
-console.log(completion.choices[0].message.content);
-console.log("=============================");
+            messages: [
+                {
+                    role: "user",
+                    content: prompt,
+                },
+            ],
+        });
 
-    const json = JSON.parse(
-        completion.choices[0].message.content
-    );
+        console.log("Groq response received");
 
-    return await generatePdfFromHtml(json.html);
+        console.log("===== RAW RESPONSE =====");
+        console.log(completion.choices[0].message.content);
+        console.log("========================");
+
+        let json;
+
+        try {
+            json = JSON.parse(completion.choices[0].message.content);
+            console.log("JSON parsed successfully");
+        } catch (err) {
+            console.error("JSON Parse Error:", err);
+            throw err;
+        }
+
+        console.log("Generating PDF from HTML...");
+
+        const pdf = await generatePdfFromHtml(json.html);
+
+        console.log("PDF generated successfully");
+
+        return pdf;
+
+    } catch (error) {
+        console.error("generateResumePdf Error:");
+        console.error(error);
+        throw error;
+    }
 }
-
-module.exports = {
-    generateInterviewReport,
-    generateResumePdf,
-};
