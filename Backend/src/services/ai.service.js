@@ -130,7 +130,6 @@ Format:
 }
 
 
-console.log("6. Browser launched");
 
 async function generatePdfFromHtml(htmlContent) {
 
