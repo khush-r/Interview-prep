@@ -1,147 +1,104 @@
-<div align="center">
+# 🚀 InterviewAI – Your AI-Powered Interview Preparation Assistant
 
-# 🚀 InterviewAI
+Prepare smarter with AI-powered resume analysis, ATS scoring, skill-gap detection, and personalized interview strategies tailored to your target role.
 
-### AI-Powered Interview Strategy Generator
+---
 
-Master your interview preparation with AI-powered resume analysis, job description matching, skill-gap detection, and personalized interview reports.
+## ⚡ Tech Stack
 
-<br>
+**Frontend:** React • React Router • SCSS • Vite
 
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
-![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+**Backend:** Node.js • Express.js • MongoDB • JWT Authentication
 
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+**AI:** Groq (Llama 3.3)
 
-![Groq](https://img.shields.io/badge/Groq-F55036?style=for-the-badge)
-![Puppeteer](https://img.shields.io/badge/Puppeteer-40B5A4?style=for-the-badge&logo=puppeteer&logoColor=white)
-![Multer](https://img.shields.io/badge/Multer-FF6B35?style=for-the-badge)
-![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+**Deployment:** Vercel • Render
 
-</div>
-Deployment
+---
 
-Vercel (Frontend)
-Render (Backend)
-🌐 Explore the Project
-🚀 Live Website
+## 🌐 Explore the Project
 
-https://your-vercel-link.vercel.app
+🚀 **Live Website:** https://interview-prep-two-chi.vercel.app
 
-🎥 Demo Video
+🎥 **Demo Video:** *Coming Soon*
 
-https://your-demo-link
+---
 
-💡 Why InterviewAI?
+## 💡 Why InterviewAI?
 
-Preparing for technical interviews can be overwhelming because candidates often struggle to understand how well their skills align with a specific job description.
+Preparing for technical interviews can be overwhelming. Candidates often struggle to understand how well their resume matches a job description and what skills they need to improve.
 
-Common challenges include:
+**InterviewAI solves this by providing:**
 
-Difficulty identifying missing technical skills
-Lack of personalized interview preparation
-Generic interview questions
-No structured preparation roadmap
-Time-consuming manual resume analysis
+* ✅ AI-powered resume and job description analysis
+* ✅ ATS-style match scoring
+* ✅ Skill-gap detection with improvement suggestions
+* ✅ Personalized technical and HR interview questions
+* ✅ Downloadable interview reports
 
-InterviewAI solves these problems by providing:
+---
 
-✅ AI-powered resume analysis
-✅ Job description matching
-✅ ATS-style match score
-✅ Personalized interview strategy
-✅ Technical & HR interview questions
-✅ Skill-gap analysis
-✅ Learning recommendations
-✅ Downloadable PDF reports
-🎯 Target Audience
-Students preparing for internships and placements
-Software Engineers preparing for product-based companies
-Career switchers entering the tech industry
-Professionals preparing for technical interviews
-Anyone looking for AI-assisted interview preparation
-🛠️ Architecture Overview
-Authentication
-JWT Authentication
-HTTP Cookies
-Protected Routes
-User Profile
-Register/Login
-Secure Session Management
-Previous Interview Reports
-Interview Generation
+## 🎯 Target Audience
 
-User uploads:
+* Students preparing for internships and placements
+* Software engineers preparing for technical interviews
+* Career switchers entering the tech industry
+* Anyone looking for AI-assisted interview preparation
 
-Resume (PDF/DOCX)
-Job Description
-Self Description (Optional)
+---
 
-↓
+## 🛠️ Architecture Overview
 
-Resume Parsing
+**Authentication:** JWT Authentication with HTTP-Only Cookies
 
-↓
+**Interview Workflow:**
 
-Groq Llama 3.3 AI
+* Resume Upload (PDF/DOCX)
+* Job Description Input
+* Optional Self Description
+* Resume Parsing
+* Groq Llama 3.3 AI Analysis
+* Interview Report Generation
+* MongoDB Storage
+* Professional PDF Report
 
-↓
+**Deployment:**
 
-Structured JSON Response
+* Frontend → Vercel
+* Backend → Render
 
-↓
+---
 
-MongoDB Storage
+## ✨ Key Features
 
-↓
+* 📄 Resume Upload (PDF/DOCX)
+* 🤖 AI-Powered Resume Analysis
+* 📊 ATS Match Score
+* 🎯 Skill Gap Detection
+* 💪 Strength & Weakness Analysis
+* 💼 Technical & HR Interview Questions
+* 📚 Learning Recommendations
+* 📥 Downloadable PDF Reports
+* 📜 Interview History
+* 🔐 Secure JWT Authentication
 
-Interactive Interview Report
+---
 
-↓
+## 🎯 Competitive Advantage
 
-Professional PDF Generation
+Compared to traditional interview preparation platforms:
 
-✨ Key Features
-📄 Resume Upload (PDF/DOCX)
-🤖 AI-Powered Interview Strategy Generation
-📊 ATS Match Score
-🎯 Skill Gap Analysis
-💪 Strengths & Weaknesses Detection
-📚 Personalized Learning Recommendations
-❓ Technical Interview Questions
-💼 HR Interview Questions
-📥 Download Report as PDF
-📜 View Previous Reports
-🔐 Secure JWT Authentication
-🚀 AI Workflow
-Resume
-        │
-        ▼
-Resume Parsing
-        │
-        ▼
-Job Description
-        │
-        ▼
-Self Description
-        │
-        ▼
-Groq Llama 3.3
-        │
-        ▼
-AI Analysis
-        │
-        ▼
-Interview Report
-        │
-        ▼
-MongoDB
-        │
-        ▼
-Professional PDF
+* ✔️ AI-driven resume and job description matching
+* ✔️ Personalized interview strategies based on candidate profiles
+* ✔️ ATS-style evaluation with actionable improvement suggestions
+* ✔️ Comprehensive interview reports in a single platform
+
+---
+
+## 🔮 Future Scope
+
+* AI Mock Voice Interviews
+* Interview Progress Tracking
+* LinkedIn Resume Import
+* Multi-language Support
+* Personalized Learning Roadmaps
