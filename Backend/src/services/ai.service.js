@@ -248,3 +248,9 @@ Example:
         throw error;
     }
 }
+console.log(generateResumePdf);
+module.exports = {
+    generateInterviewReport,
+    
+    generateResumePdf,
+};
