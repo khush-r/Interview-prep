@@ -14,24 +14,31 @@ const Home = () => {
 const handleGenerateReport = async () => {
     const resumeFile = resumeInputRef.current.files[0];
 
-    console.log("Resume File:", resumeFile);
-    console.log("Job Description:", jobDescription);
-    console.log("Self Description:", selfDescription);
-
     if (!resumeFile) {
         alert("Please select a resume first.");
         return;
     }
 
-    const data = await generateReport({
-        jobDescription,
-        selfDescription,
-        resumeFile,
-    });
+    try {
+       const data = await generateReport({
+    jobDescription,
+    selfDescription,
+    resumeFile,
+});
 
-    navigate(`/interview/${data._id}`);
+if (!data) {
+    return;
+}
+
+navigate(`/interview/${data._id}`)
+} catch (err) {
+        console.error(err);
+
+        if (err.response?.status === 401) {
+            navigate("/login");
+        }
+    }
 };
-
 
 
     if (loading) {

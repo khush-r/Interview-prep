@@ -45,12 +45,19 @@ const { user, setUser, loading, setLoading } = context;
     }
         useEffect(()=>{
         const getAndSetUser=async()=>{
-          try{  const data= await getMe()
-            setUser(data.user)
-          }catch(err){}
-          finally{
-            setLoading(false)
-          }
+          try {
+    const data = await getMe();
+
+    if (data?.user) {
+        setUser(data.user);
+    } else {
+        setUser(null);
+    }
+} catch (err) {
+    setUser(null);
+} finally {
+    setLoading(false);
+}
             
         }
         getAndSetUser()

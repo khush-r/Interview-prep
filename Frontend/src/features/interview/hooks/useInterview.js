@@ -16,19 +16,25 @@ export const useInterview = () => {
     const { loading, setLoading, report, setReport, reports, setReports } = context
 
     const generateReport = async ({ jobDescription, selfDescription, resumeFile }) => {
-        setLoading(true)
-        let response = null
-        try {
-            response = await generateInterviewReport({ jobDescription, selfDescription, resumeFile })
-            setReport(response.interviewReport)
-        } catch (error) {
-            console.log(error)
-        } finally {
-            setLoading(false)
-        }
+    setLoading(true);
 
-        return response.interviewReport
+    try {
+        const response = await generateInterviewReport({
+            jobDescription,
+            selfDescription,
+            resumeFile,
+        });
+
+        setReport(response.interviewReport);
+        return response.interviewReport;
+    } catch (error) {
+        console.log(error);
+        return null;
+    } finally {
+        setLoading(false);
     }
+};
+      
 
     const getReportById = async (interviewId) => {
         setLoading(true)
@@ -41,7 +47,7 @@ export const useInterview = () => {
         } finally {
             setLoading(false)
         }
-        return response.interviewReport
+        return response ? response.interviewReport : null;
     }
 
     const getReports = async () => {
@@ -56,7 +62,7 @@ export const useInterview = () => {
             setLoading(false)
         }
 
-        return response.interviewReports
+       return response ? response.interviewReports : [];
     }
 
     const getResumePdf = async (interviewReportId) => {
