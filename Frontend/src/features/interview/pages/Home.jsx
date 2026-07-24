@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import "../style/home.scss"
 import { useInterview } from '../hooks/useInterview.js'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 
 const Home = () => {
 
@@ -11,35 +11,12 @@ const Home = () => {
     const resumeInputRef = useRef()
 
     const navigate = useNavigate()
-const handleGenerateReport = async () => {
-    const resumeFile = resumeInputRef.current.files[0];
 
-    if (!resumeFile) {
-        alert("Please select a resume first.");
-        return;
+    const handleGenerateReport = async () => {
+        const resumeFile = resumeInputRef.current.files[ 0 ]
+        const data = await generateReport({ jobDescription, selfDescription, resumeFile })
+        navigate(`/interview/${data._id}`)
     }
-
-    try {
-       const data = await generateReport({
-    jobDescription,
-    selfDescription,
-    resumeFile,
-});
-
-if (!data) {
-    return;
-}
-
-navigate(`/interview/${data._id}`)
-} catch (err) {
-        console.error(err);
-
-        if (err.response?.status === 401) {
-            navigate("/login");
-        }
-    }
-};
-
 
     if (loading) {
         return (
@@ -104,18 +81,7 @@ navigate(`/interview/${data._id}`)
                                 </span>
                                 <p className='dropzone__title'>Click to upload or drag &amp; drop</p>
                                 <p className='dropzone__subtitle'>PDF or DOCX (Max 5MB)</p>
-                                <input
-    ref={resumeInputRef}
-    hidden
-    type="file"
-    id="resume"
-    name="resume"
-    accept=".pdf,.doc,.docx"
-    onChange={(e) => {
-    console.log("Selected file:", e.target.files[0]);
-}}
-    
-/>
+                                <input ref={resumeInputRef} hidden type='file' id='resume' name='resume' accept='.pdf,.docx' />
                             </label>
                         </div>
 
