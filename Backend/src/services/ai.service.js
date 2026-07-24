@@ -1,7 +1,8 @@
 const Groq = require("groq-sdk");
 const { z } = require("zod")
 
-const puppeteer = require("puppeteer")
+const chromium = require("@sparticuz/chromium");
+const puppeteer = require("puppeteer-core");
 
 const groq = new Groq({
     apiKey: process.env.GROQ_API_KEY
@@ -79,7 +80,12 @@ try {
 
 
 async function generatePdfFromHtml(htmlContent) {
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath(),
+    headless: chromium.headless,
+});
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: "networkidle0" })
 
